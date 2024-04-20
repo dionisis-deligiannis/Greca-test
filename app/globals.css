@@ -5,3 +5,21 @@
   margin: 0;
 }
 
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.link {
+  font-size: 1.5rem;
+  color: blue;
+  text-decoration: none;
+}

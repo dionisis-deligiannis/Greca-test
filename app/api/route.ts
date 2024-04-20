@@ -1,31 +1,25 @@
 
 import { NextApiRequest, NextApiResponse } from 'next';
+import { NextResponse } from 'next/server';
 
+export async function POST(req: NextApiRequest, res: NextApiResponse) {
+  try {
+    
+    
+    // Simulate a delay of 3 seconds
+    await new Promise(resolve => setTimeout(resolve, 3000));
 
-interface FormData {
-  firstName: string;
-  email: string;
-  ageGroup: string;
-  address: string;
-}
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    if (req.method === 'POST') {
-      try {
-        
-        const { firstName, email, ageGroup, address }: FormData = req.body;
-  
-        // Server-side validation using Yup (if needed)
-        // Add your validation logic here
-  
-        // Simulate processing form data
-        // In this example, we simply return the submitted data
-        res.status(200).json({ message: 'Form submitted successfully', data: { firstName, email, ageGroup, address } });
-      } catch (error) {
-        // Handle errors
-        res.status(400).json({ message: 'Error: '  });
-      }
-    } else {
-      // Return Method Not Allowed for non-POST requests
-      res.status(405).json({ message: 'Method Not Allowed' });
-    }
+    // Assuming the request was processed successfully, return a 200 OK response
+    return NextResponse.json({
+      status: 200,
+      message: 'POST request processed successfully',
+    });
+  } catch (error) {
+    console.error('Error processing POST request:', error);
+    
+    return NextResponse.json({
+      status: 500,
+      error: 'Internal Server Error',
+    });
   }
+}
